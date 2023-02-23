@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"fmt"
+	"time"
 )
 
 type ProteinusMember struct {
@@ -18,8 +19,18 @@ func personHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(member)
 }
 
+func timeHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	now := time.Now()
+
+	json.NewEncoder(w).Encode(now)
+}
+
 func main() {
 	http.HandleFunc("/person", personHandler)
+	http.HandleFunc("/time", timeHandler)
+
 	fmt.Println("Server is running...")
 	http.ListenAndServe(":8080", nil)
 }
