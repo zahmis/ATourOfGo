@@ -3,11 +3,13 @@ package main
 import (
 	"fmt"
 	"math"
+
 	// "math/rand"
 	"runtime"
+
+	"rsc.io/quote"
 	// "time"
 )
-import "rsc.io/quote"
 
 func pow(x, n, lim float64) float64 {
 	defer fmt.Println("pow")
