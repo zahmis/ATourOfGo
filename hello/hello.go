@@ -1,46 +1,33 @@
 package main
 
-import (
-	"fmt"
-	"math"
+import "fmt"
 
-	// "math/rand"
-	"runtime"
+var n int
+var w []string
 
-	"rsc.io/quote"
-	// "time"
-)
-
-func pow(x, n, lim float64) float64 {
-	defer fmt.Println("pow")
-	if v := math.Pow(x, n); v < lim {
-		return v
+func init() {
+	fmt.Println("init")
+	fmt.Scanln(&n)
+	w = make([]string, n)
+	for i := 0; i < n; i++ {
+		fmt.Scan(&w[i])
 	}
-	return lim
+	fmt.Println(w)
 }
 
 func main() {
-
-	defer fmt.Println("world")
-
-	fmt.Print("Go runs on ")
-	switch os := runtime.GOOS; os {
-	case "darwin":
-		fmt.Println("OS X.")
-	case "linux":
-		fmt.Println("Linux.")
-	default:
-		// freebsd, openbsd,
-		// plan9, windows...
-		fmt.Printf("%s.", os)
+	is := false
+	for i := 0; i < n; i++ {
+		fmt.Println(w[i])
+		if w[i] == "and" || w[i] == "the" || w[i] == "not" || w[i] == "you" || w[i]=="that" {
+			is = true
+		}
 	}
 
-
-	fmt.Println("Hello, World!")
-
-	fmt.Println(quote.Go())
-	fmt.Println(
-		pow(3, 2, 10),
-		pow(3, 3, 20),
-	)
+	if is {
+		fmt.Println("YES")
+	} else {
+		fmt.Println("NO")
+	}
+	
 }
